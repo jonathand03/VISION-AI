@@ -1,0 +1,2 @@
+source /home/jonathan/Documents/Espressif/esp_camera/build/gdbinit/symbols
+source /home/jonathan/Documents/Espressif/esp_camera/build/gdbinit/connect
