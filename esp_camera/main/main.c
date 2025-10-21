@@ -1,36 +1,3 @@
-/**
- * This example takes a picture every 5s and print its size on serial monitor.
- */
-
-// =============================== SETUP ======================================
-
-// 1. Board setup (Uncomment):
-// #define BOARD_WROVER_KIT
-// #define BOARD_ESP32CAM_AITHINKER
-// #define BOARD_ESP32S3_WROOM
-// #define BOARD_ESP32S3_GOOUUU
-
-/**
- * 2. Kconfig setup
- *
- * If you have a Kconfig file, copy the content from
- *  https://github.com/espressif/esp32-camera/blob/master/Kconfig into it.
- * In case you haven't, copy and paste this Kconfig file inside the src directory.
- * This Kconfig file has definitions that allows more control over the camera and
- * how it will be initialized.
- */
-
-/**
- * 3. Enable PSRAM on sdkconfig:
- *
- * CONFIG_ESP32_SPIRAM_SUPPORT=y
- *
- * More info on
- * https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/kconfig.html#config-esp32-spiram-support
- */
-
-// ================================ CODE ======================================
-
 #include <esp_log.h>
 #include <esp_system.h>
 #include <nvs_flash.h>
@@ -180,7 +147,7 @@ static camera_config_t camera_config = {
 
     .jpeg_quality = 12, //0-63, for OV series camera sensors, lower number means higher quality
     .fb_count = 1,       //When jpeg mode is used, if fb_count more than one, the driver will work in continuous mode.
-    .fb_location = CAMERA_FB_IN_DRAM,
+    .fb_location = CAMERA_FB_IN_DRAM, //CAMERA_FB_IN_PSRAM or CAMERA_FB_IN_DRAM
     .grab_mode = CAMERA_GRAB_WHEN_EMPTY,
 };
 
