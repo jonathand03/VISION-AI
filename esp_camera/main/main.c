@@ -1,3 +1,18 @@
+/** @brief 
+ * 
+ * 
+ * ANTES DE COMPILAR E FAZER O UPLOAD DO CODIGO PARA O ESP32-S3 VOCE DEVE USAR UMA DAS SEGUINTES FLAGS:
+ * 
+ * @p SHOW_CAPTURE_TIME_MS  -> PARA MOSTRAR O TEMPO DE CAPTURA E TEMPO TOTAL DE CADA CICLO DE CAPTURA
+ * @p SAVE_PIC_TO_SD        -> PARA SALVAR AS IMAGENS CAPTURADAS NO CARTAO SD 
+ */
+
+// Descomente uma das linhas abaixo para ativar a funcionalidade desejada
+
+//#define SHOW_CAPTURE_TIME_MS
+#define SAVE_PIC_TO_SD
+
+
 #include <esp_log.h>
 #include <esp_system.h>
 #include <nvs_flash.h>
@@ -6,7 +21,7 @@
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-
+#include "esp_timer.h"
 
 
 
@@ -242,24 +257,70 @@ static bool save_jpeg_to_sd(camera_fb_t *pic) {
     return bytesWritten == pic->len;
 }
 
+
+#ifdef SHOW_CAPTURE_TIME_MS
+
 void app_main(void)
 {
 #if ESP_CAMERA_SUPPORTED
-    // if(ESP_OK != init_camera()) {
-    //     return;
-    // }
+    if(ESP_OK != init_camera()) {
+        return;
+    }
 
-    // while (1)
-    // {
-    //     ESP_LOGI(TAG, "Taking picture...");
-    //     camera_fb_t *pic = esp_camera_fb_get();
+    while (1)
+    {
+        // 1. INÍCIO DA MEDIÇÃO TOTAL DO CICLO (T_total)
+        int64_t total_cycle_start = esp_timer_get_time();
+        
+        ESP_LOGI(TAG, "Taking picture...");
 
-    //     // use pic->buf to access the image
-    //     ESP_LOGI(TAG, "Picture taken! Its size was: %zu bytes", pic->len);
-    //     esp_camera_fb_return(pic);
+        // 2. REGISTRA O INÍCIO DA CAPTURA (T_capture)
+        int64_t capture_start = esp_timer_get_time();
+        
+        // CHAMADA DE BLOQUEIO QUE DEVE LEVAR ~12ms
+        camera_fb_t *pic = esp_camera_fb_get(); 
 
-    //     vTaskDelay(5000 / portTICK_RATE_MS);
-    // }
+        // 3. REGISTRA O FIM DA CAPTURA
+        int64_t capture_end = esp_timer_get_time();
+        
+        if (!pic) {
+            ESP_LOGE(TAG, "Falha na captura da câmera!");
+        } else {
+             ESP_LOGI(TAG, "Picture taken! Size: %zu bytes", pic->len);
+             
+             // CÁLCULO DO TEMPO DE CAPTURA PURO (T_capture)
+             int64_t capture_time_us = capture_end - capture_start;
+             
+             // Log T_capture (Deve ser ~12ms, ou o valor real de bloqueio)
+             ESP_LOGI(TAG, "Tempo de Captura (T_capture): %.2f ms", (float)capture_time_us / 1000.0);
+
+             // 4. LIBERAÇÃO DO BUFFER
+             esp_camera_fb_return(pic);
+
+             // 5. FIM DA MEDIÇÃO TOTAL DO CICLO
+             int64_t total_cycle_end = esp_timer_get_time();
+
+             // CÁLCULO DO TEMPO TOTAL (T_total)
+             int64_t total_time_us = total_cycle_end - total_cycle_start;
+             
+             // Log T_total (Deve ser ~12ms + tempo de liberação e log)
+             ESP_LOGI(TAG, "Tempo Total do Ciclo (T_total): %.2f ms", (float)total_time_us / 1000.0);
+        }
+
+        vTaskDelay(5000 / portTICK_RATE_MS);
+    }
+#else
+    ESP_LOGE(TAG, "Camera support is not available for this chip");
+    return;
+#endif
+}
+
+#endif // SHOW_CAPTURE_TIME_MS
+
+#ifdef SAVE_PIC_TO_SD
+void app_main(void)
+{
+#if ESP_CAMERA_SUPPORTED
 
     if(ESP_OK != init_camera()) {
         ESP_LOGE(TAG, "Fail on initializing camera");
@@ -295,3 +356,4 @@ void app_main(void)
     return;
 #endif
 }
+#endif //SAVE_PIC_TO_SD
