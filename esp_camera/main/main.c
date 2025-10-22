@@ -9,8 +9,8 @@
 
 // Descomente uma das linhas abaixo para ativar a funcionalidade desejada
 
-//#define SHOW_CAPTURE_TIME_MS
-#define SAVE_PIC_TO_SD
+#define SHOW_CAPTURE_TIME_MS
+//#define SAVE_PIC_TO_SD
 
 
 #include <esp_log.h>
