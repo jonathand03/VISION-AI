@@ -1,1 +1,8 @@
-db73a8a8c91b3b7e9d83f891b8be7b33ba597a2e
+0000000000000000000000000000000000000000 510bf06e9b2863596b2f1e17eb038b313432b97a Jonathan Drumond <jonathandrumond03@gmail.com> 1761066288 -0300	commit (initial): Project Dependencies
+510bf06e9b2863596b2f1e17eb038b313432b97a 4010d9de29df7339dcc37338a3d4845213c89b1f Jonathan Drumond <jonathandrumond03@gmail.com> 1761066438 -0300	commit: Rename main and removing comments
+4010d9de29df7339dcc37338a3d4845213c89b1f 9f9bc13dbedd0b4b135bba44d7f615357b807a68 Jonathan Drumond <jonathandrumond03@gmail.com> 1761067174 -0300	commit: Atualizando depedencias
+9f9bc13dbedd0b4b135bba44d7f615357b807a68 ed06e9cc371b207a9b2e47dc5a35cb39e26e6fb2 Jonathan Drumond <jonathandrumond03@gmail.com> 1761067190 -0300	commit: Criando a pasta do esp bengala
+ed06e9cc371b207a9b2e47dc5a35cb39e26e6fb2 13da3742272749f27bae0e1b58babe8146c62fce Jonathan Drumond <jonathandrumond03@gmail.com> 1761067262 -0300	commit: Removendo readme do projeto baSe
+13da3742272749f27bae0e1b58babe8146c62fce ca2f31dbc5e25af63602b9702b131b03115d7032 Jonathan Drumond <jonathandrumond03@gmail.com> 1761108550 -0300	commit: Melhorias para teste
+ca2f31dbc5e25af63602b9702b131b03115d7032 db73a8a8c91b3b7e9d83f891b8be7b33ba597a2e Jonathan Drumond <jonathandrumond03@gmail.com> 1761108656 -0300	commit: Alterando teste padrao para tempo de captura
+db73a8a8c91b3b7e9d83f891b8be7b33ba597a2e 5ea7ff223b2114d708abaf16acd9b3af54a46813 Jonathan Drumond <jonathandrumond03@gmail.com> 1762485612 -0300	commit: Esp bengala funcoes basicas

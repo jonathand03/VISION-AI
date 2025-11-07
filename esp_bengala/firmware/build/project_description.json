@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "firmware",
-    "project_version":    "db73a8a-dirty",
+    "project_version":    "5ea7ff2-dirty",
     "project_path":       "/home/jonathan/Documents/Git/VISION-AI/esp_bengala/firmware",
     "idf_path":           "/home/jonathan/esp/v5.5.1/esp-idf",
     "build_dir":          "/home/jonathan/Documents/Git/VISION-AI/esp_bengala/firmware/build",
