@@ -3,4 +3,4 @@ source "/home/jonathan/esp/v5.5.1/esp-idf/components/esp_app_format/Kconfig.proj
 source "/home/jonathan/esp/v5.5.1/esp-idf/components/esp_rom/Kconfig.projbuild"
 source "/home/jonathan/esp/v5.5.1/esp-idf/components/esptool_py/Kconfig.projbuild"
 source "/home/jonathan/esp/v5.5.1/esp-idf/components/partition_table/Kconfig.projbuild"
-source "/home/jonathan/Documents/Espressif/esp_camera/main/Kconfig.projbuild"
+source "/home/jonathan/Documents/Git/VISION-AI/esp_camera/main/Kconfig.projbuild"

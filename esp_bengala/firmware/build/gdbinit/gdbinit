@@ -1,0 +1,2 @@
+source /home/jonathan/Documents/Git/VISION-AI/esp_bengala/firmware/build/gdbinit/symbols
+source /home/jonathan/Documents/Git/VISION-AI/esp_bengala/firmware/build/gdbinit/connect

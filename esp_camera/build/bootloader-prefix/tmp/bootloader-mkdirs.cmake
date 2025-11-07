@@ -5,18 +5,18 @@ cmake_minimum_required(VERSION 3.5)
 
 file(MAKE_DIRECTORY
   "/home/jonathan/esp/v5.5.1/esp-idf/components/bootloader/subproject"
-  "/home/jonathan/Documents/Espressif/esp_camera/build/bootloader"
-  "/home/jonathan/Documents/Espressif/esp_camera/build/bootloader-prefix"
-  "/home/jonathan/Documents/Espressif/esp_camera/build/bootloader-prefix/tmp"
-  "/home/jonathan/Documents/Espressif/esp_camera/build/bootloader-prefix/src/bootloader-stamp"
-  "/home/jonathan/Documents/Espressif/esp_camera/build/bootloader-prefix/src"
-  "/home/jonathan/Documents/Espressif/esp_camera/build/bootloader-prefix/src/bootloader-stamp"
+  "/home/jonathan/Documents/Git/VISION-AI/esp_camera/build/bootloader"
+  "/home/jonathan/Documents/Git/VISION-AI/esp_camera/build/bootloader-prefix"
+  "/home/jonathan/Documents/Git/VISION-AI/esp_camera/build/bootloader-prefix/tmp"
+  "/home/jonathan/Documents/Git/VISION-AI/esp_camera/build/bootloader-prefix/src/bootloader-stamp"
+  "/home/jonathan/Documents/Git/VISION-AI/esp_camera/build/bootloader-prefix/src"
+  "/home/jonathan/Documents/Git/VISION-AI/esp_camera/build/bootloader-prefix/src/bootloader-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "/home/jonathan/Documents/Espressif/esp_camera/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
+    file(MAKE_DIRECTORY "/home/jonathan/Documents/Git/VISION-AI/esp_camera/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "/home/jonathan/Documents/Espressif/esp_camera/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "/home/jonathan/Documents/Git/VISION-AI/esp_camera/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
 endif()
